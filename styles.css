@@ -2,3 +2,9 @@ body {
 	background: red;
 	color: white;
 }
+
+div + p{
+	color: yellow;
+	background: blue;
+	box-shadow: 0 0 0 10px yellow;
+}
