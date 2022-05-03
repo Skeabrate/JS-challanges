@@ -322,3 +322,50 @@ const getPrice = (list) => list.map((item) => item.price);
 const countPrice = (val) => val.reduce((prev, curr) => prev + curr, 0);
 
 console.log(compose(countPrice, getPrice, getQuantity)(groceryStore));
+
+(function reduceObj() {
+  const formData = {
+    name: 'Sebastian',
+    billing_address_city: 'Warsaw',
+    billing_address_street: 'ul. Pomorska',
+    shipping_address_city: 'Krakow',
+    shipping_address_street: 'ul. kotlarska',
+  };
+
+  /* let result = {
+    name: 'Sebastian',
+    billing_address: { city: 'Warsaw', street: 'ul. Pomorska' },
+    shipping_address: { city: 'Krakow', street: 'ul. Kotlarska' },
+  }; */
+
+  const newForm = Object.keys(formData).reduce((result, key) => {
+    if (!key.match('_')) {
+      result[key] = formData[key];
+    } else {
+      const newKey = key.split(/_([^_]*)$/);
+      if (!result[newKey[0]]) result[newKey[0]] = {};
+      result[newKey[0]][newKey[1]] = formData[key];
+    }
+
+    return result;
+  }, {});
+
+  console.log(newForm);
+})();
+
+(function reverseMethod() {
+  const add = (value) => value + 1;
+  const subtract = (value) => value - 2;
+  const double = (value) => value * 2;
+
+  const pipe = [add, subtract, double];
+  let result = pipe.reduce((total, fn) => {
+    return fn(total);
+  }, 5);
+  let resultReverse = pipe.reduceRight((total, fn) => {
+    return fn(total);
+  }, 5);
+
+  console.log(result);
+  console.log(resultReverse);
+})();
