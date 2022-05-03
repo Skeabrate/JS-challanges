@@ -113,13 +113,13 @@ arrayOfNumbers.reduce((prev, curr, index, array) => {
 });
 /* console.log(arrayOfNumbers); */
 
-/* const a = [1, 2, 5, 7, 9];
+const a = [1, 2, 5, 7, 9];
 const b = [2, 5, 7, 12, 100];
 
 const c = [...a, ...b].sort((a, b) => b - a);
-console.log(c); */
+/* console.log(c); */
 
-/* const obj = {
+const obj = {
   x: 1,
   getX() {
     const inner = function () {
@@ -128,14 +128,12 @@ console.log(c); */
     inner.bind(this)();
   },
 };
-obj.getX(); */
+obj.getX();
 
-/* let str = 'i love javaScript';
+let str = 'i love javaScript';
+/* console.log(str.split('').reverse().join('')); */
 
-console.log(str.split('').reverse().join('')); */
-
-/* const arr = [1, 2, 3, 4];
-
+// const arr = [1, 2, 3, 4];
 Array.prototype.max = function () {
   console.log(Math.max(...this));
 };
@@ -144,9 +142,9 @@ Array.prototype.min = function () {
 };
 
 arr.max();
-arr.min(); */
+arr.min();
 
-/* let x = 123445; // find length without converting to string
+let x = 123445; // find length without converting to string
 
 function findLength(num) {
   let count = 0;
@@ -158,23 +156,22 @@ function findLength(num) {
   return count;
 }
 
-console.log(findLength(x)); */
-/* 
-let x = [1, 2, 2, 4, 2, 4];
+/* console.log(findLength(x)); */
+
+let y = [1, 2, 2, 4, 2, 4];
 let count = 0;
 
-x.forEach((item) => Math.max(...x) === item && count++);
+y.forEach((item) => Math.max(...y) === item && count++);
 
-console.log(
-  x.reduce((acc, curr, index, arr) => {
+/* console.log(
+  y.reduce((acc, curr, index, arr) => {
     if (curr === Math.max(...arr)) acc += 1;
     return acc;
   }, 0)
-);
+); */
+/* console.log(count); */
 
-console.log(count); */
-
-/* let time = '03:10PM';
+let time = '03:10PM';
 
 const convertTime = (val) => {
   const check = val.split('PM');
@@ -182,41 +179,13 @@ const convertTime = (val) => {
 
   return `${+check[0].slice(0, 2) + 12}${check[0].slice(2)}PM`;
 };
-
-console.log(convertTime(time));
- */
+/* console.log(convertTime(time)); */
 
 /* for (let i = 1; i <= 100; i++) {
   if (i % 3 === 0 && i % 5 === 0) console.log('FizzBuzz');
   else if (i % 3 === 0) console.log('Fizz');
   else if (i % 5 === 0) console.log('Buzz');
   else console.log(i);
-} */
-
-/* const main = document.getElementById('main');
-
-for (let i = 0; i < 2; i++) {
-  const square = document.createElement('div');
-
-  square.style.width = '50px';
-  square.style.height = '50px';
-  square.style.backgroundColor = 'red';
-  square.style.display = 'inline-block';
-  square.style.position = 'relative';
-  if (!i) square.style.marginRight = '10px';
-
-  const circle = document.createElement('div');
-  circle.style.width = '10px';
-  circle.style.height = '10px';
-  circle.style.backgroundColor = 'yellow';
-  circle.style.borderRadius = '100px';
-  circle.style.position = 'absolute';
-  circle.style.top = '50%';
-  circle.style.left = '50%';
-  circle.style.transform = 'translate(-50%, -50%)';
-
-  square.appendChild(circle);
-  main.appendChild(square);
 } */
 
 /* 1. Find the frequency of elements in array */
@@ -286,6 +255,6 @@ const isNumberInArrayOfArrays = (value, array) => {
   return console.log(result.length ? true : false);
 }; */
 
-isNumberInArrayOfArrays(0, arr);
+/* isNumberInArrayOfArrays(0, arr);
 isNumberInArrayOfArrays(21, arr);
-isNumberInArrayOfArrays(221, arr);
+isNumberInArrayOfArrays(221, arr); */
