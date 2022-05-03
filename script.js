@@ -279,10 +279,46 @@ function findMusicObj() {
   console.log(result);
 
   // Declarative <3
-  const shortestReducer = (prev, next) =>
-    prev.duration < next.duration ? prev : next;
+  const shortestReducer = (prev, next) => (prev.duration < next.duration ? prev : next);
   const shortest = arr.reduce(shortestReducer, []);
   console.log(shortest);
 }
 
 findMusicObj();
+
+(function convertToMin() {
+  const player = {
+    name: 'seba',
+    games: [
+      { name: 'Dofus', playTime: 20280 },
+      { name: 'GTA', playTime: 12660 },
+      { name: 'Leage of Legends', playTime: 8580 },
+    ],
+  };
+
+  const longestGame = (arr) =>
+    arr.reduce((prev, next) => (prev.playTime > next.playTime ? prev : next), []);
+  console.log(longestGame(player.games));
+})();
+
+/* Function Composition */
+const groceryStore = [
+  { title: 'orange', quantity: 1, price: 5 },
+  { title: 'banana', quantity: 3, price: 7 },
+  { title: 'melon', quantity: 2, price: 10 },
+  { title: 'apple', quantity: 4, price: 2 },
+  { title: 'kiwi', quantity: 2, price: 12 },
+  { title: 'watermelon', quantity: 3, price: 3 },
+  { title: 'lemon', quantity: 2, price: 7 },
+];
+
+const compose =
+  (...fns) =>
+  (x) =>
+    fns.reduceRight((acc, fn) => fn(acc), x);
+
+const getQuantity = (list) => list.filter((item) => item.quantity === 2);
+const getPrice = (list) => list.map((item) => item.price);
+const countPrice = (val) => val.reduce((prev, curr) => prev + curr, 0);
+
+console.log(compose(countPrice, getPrice, getQuantity)(groceryStore));
