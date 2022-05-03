@@ -107,46 +107,55 @@ function fibonacci2(n) {
 /* console.log(fibonacci2(10)); */
 
 /* 8. Double elements using reduce */
-const arrayOfNumbers = [1, 2, 3, 4];
-arrayOfNumbers.reduce((prev, curr, index, array) => {
-  array[index] = array[index] * 2;
-});
-/* console.log(arrayOfNumbers); */
+function doubleElements() {
+  const arrayOfNumbers = [1, 2, 3, 4];
 
-const a = [1, 2, 5, 7, 9];
-const b = [2, 5, 7, 12, 100];
+  arrayOfNumbers.reduce((prev, curr, index, array) => {
+    array[index] = array[index] * 2;
+  });
 
-const c = [...a, ...b].sort((a, b) => b - a);
-/* console.log(c); */
+  arrayOfNumbers.forEach((item) => (item = item * 2));
+
+  console.log(arrayOfNumbers);
+}
+doubleElements();
 
 const obj = {
   x: 1,
   getX() {
-    const inner = function () {
+    /* const inner = function () {
       console.log(this.x);
     };
-    inner.bind(this)();
+    inner.bind(this)(); */
+    const inner = () => {
+      console.log(this.x);
+    };
+    inner();
   },
 };
 obj.getX();
 
-let str = 'i love javaScript';
-/* console.log(str.split('').reverse().join('')); */
+function reverseWord() {
+  let str = 'i love javaScript';
+  console.log(str.split('').reverse().join(''));
+}
 
-// const arr = [1, 2, 3, 4];
-Array.prototype.max = function () {
-  console.log(Math.max(...this));
-};
-Array.prototype.min = function () {
-  console.log(Math.min(...this));
-};
+function addMaxMinMethods() {
+  const arr = [1, 2, 3, 4];
+  Array.prototype.max = function () {
+    console.log(Math.max(...this));
+  };
+  Array.prototype.min = function () {
+    console.log(Math.min(...this));
+  };
 
-arr.max();
-arr.min();
+  arr.max();
+  arr.min();
+}
 
-let x = 123445; // find length without converting to string
-
-function findLength(num) {
+/* find length without converting to string */
+function findLength() {
+  let num = 123445;
   let count = 0;
 
   while (num > 1) {
@@ -156,42 +165,40 @@ function findLength(num) {
   return count;
 }
 
-/* console.log(findLength(x)); */
+function findCountOfHighestNumber() {
+  let y = [1, 2, 2, 4, 2, 4];
+  let count = 0;
 
-let y = [1, 2, 2, 4, 2, 4];
-let count = 0;
+  y.forEach((item) => Math.max(...y) === item && count++);
 
-y.forEach((item) => Math.max(...y) === item && count++);
-
-/* console.log(
-  y.reduce((acc, curr, index, arr) => {
+  /* y.reduce((acc, curr, index, arr) => {
     if (curr === Math.max(...arr)) acc += 1;
     return acc;
-  }, 0)
-); */
-/* console.log(count); */
+  }, 0) */
+}
 
-let time = '03:10PM';
-
-const convertTime = (val) => {
-  const check = val.split('PM');
-  if (check[1] === undefined) return val;
+const convertTime = () => {
+  let time = '03:10PM';
+  const check = time.split('PM');
+  if (check[1] === undefined) return time;
 
   return `${+check[0].slice(0, 2) + 12}${check[0].slice(2)}PM`;
 };
-/* console.log(convertTime(time)); */
 
-/* for (let i = 1; i <= 100; i++) {
-  if (i % 3 === 0 && i % 5 === 0) console.log('FizzBuzz');
-  else if (i % 3 === 0) console.log('Fizz');
-  else if (i % 5 === 0) console.log('Buzz');
-  else console.log(i);
-} */
+/* FizzBuzz */
+function fizzBuzz() {
+  for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) console.log('FizzBuzz');
+    else if (i % 3 === 0) console.log('Fizz');
+    else if (i % 5 === 0) console.log('Buzz');
+    else console.log(i);
+  }
+}
 
 /* 1. Find the frequency of elements in array */
-let data = ['hello', 'java', 'hello', 'world', 'java', 'java'];
+function findFrequency() {
+  let arr = ['hello', 'java', 'hello', 'world', 'java', 'java'];
 
-function findFrequency(arr) {
   return arr.reduce((acc, prev) => {
     if (acc[prev]) acc[prev]++;
     else acc[prev] = 1;
@@ -200,15 +207,15 @@ function findFrequency(arr) {
 }
 
 /* 2. Group items on the basis of age of given array of object */
-let people = [
-  { name: 'Seba', age: 21 },
-  { name: 'Alice', age: 20 },
-  { name: 'Jane', age: 20 },
-  { name: 'Jane', age: 19 },
-  { name: 'Jane', age: 20 },
-];
+function groupPeople() {
+  let arr = [
+    { name: 'Seba', age: 21 },
+    { name: 'Alice', age: 20 },
+    { name: 'Jane', age: 20 },
+    { name: 'Jane', age: 19 },
+    { name: 'Jane', age: 20 },
+  ];
 
-function groupPeople(arr) {
   let hash = {};
 
   arr.forEach((item) => {
@@ -231,13 +238,12 @@ function reverseArr() {
   return arr;
 }
 
-const arr = [
-  [3, 21, 37],
-  [61, 79, 101, 120],
-  [133, 149],
-];
-
-const isNumberInArrayOfArrays = (value, array) => {
+const isNumberInArrayOfArrays = (value) => {
+  const array = [
+    [3, 21, 37],
+    [61, 79, 101, 120],
+    [133, 149],
+  ];
   let check = false;
 
   array.forEach((innerArr) => {
@@ -248,13 +254,35 @@ const isNumberInArrayOfArrays = (value, array) => {
   });
   return console.log(check);
 };
-
 /* const isNumberInArrayOfArrays = (value, array) => {
   const flatArr = array.flat(2);
   const result = flatArr.filter((item) => item === value);
   return console.log(result.length ? true : false);
 }; */
+isNumberInArrayOfArrays(0);
+isNumberInArrayOfArrays(21);
+isNumberInArrayOfArrays(221);
 
-/* isNumberInArrayOfArrays(0, arr);
-isNumberInArrayOfArrays(21, arr);
-isNumberInArrayOfArrays(221, arr); */
+function findMusicObj() {
+  const arr = [
+    { name: 'first song', release: 1977, duration: 295 },
+    { name: 'second song', release: 1983, duration: 230 },
+    { name: 'third song', release: 1962, duration: 245 },
+    { name: 'fourth song', release: 1991, duration: 291 },
+  ];
+
+  // Imperative
+  let result = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (result.duration > arr[i].duration) result = arr[i];
+  }
+  console.log(result);
+
+  // Declarative <3
+  const shortestReducer = (prev, next) =>
+    prev.duration < next.duration ? prev : next;
+  const shortest = arr.reduce(shortestReducer, []);
+  console.log(shortest);
+}
+
+findMusicObj();
