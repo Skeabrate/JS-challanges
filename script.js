@@ -369,3 +369,40 @@ console.log(compose(countPrice, getPrice, getQuantity)(groceryStore));
   console.log(result);
   console.log(resultReverse);
 })();
+
+let firstPromise = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('first failed'));
+    }, 1000);
+  });
+
+let secondPromise = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('second');
+    }, 1000);
+  });
+
+async function fetchItems() {
+  // Promise.allSettled([firstPromise(), secondPromise()]).then((res) => console.log(res));
+  /*  try {
+     const res = await firstPromise();
+    const res1 = await secondPromise();
+    console.log(res1, res);
+    const res = await Promise.all([
+      firstPromise().catch((err) => console.log(err)),
+      secondPromise().catch((err) => console.log(err)),
+    ]);
+    console.log(res);
+  } catch (err) {
+    console.log(err.message);
+  } */
+  const res = await Promise.all([
+    firstPromise().catch((err) => console.log(err)),
+    secondPromise().catch((err) => console.log(err)),
+  ]);
+  console.log(res);
+}
+
+fetchItems();
