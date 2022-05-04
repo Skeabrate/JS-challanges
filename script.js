@@ -436,3 +436,14 @@ const newList = factory();
 newList.addItem('first item');
 newList.addItem('second item');
 newList.getItems().forEach((item) => console.log(item));
+
+/* FUNCTORS */
+const double = (x) => x * 2;
+
+const Functor = (x) => ({
+  map: (fn) => Functor(fn(x)),
+  valueof: () => x,
+});
+
+const newFunctor = Functor(double(5)).map(double);
+console.log(newFunctor.valueof());
