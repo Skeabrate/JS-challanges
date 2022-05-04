@@ -370,6 +370,7 @@ console.log(compose(countPrice, getPrice, getQuantity)(groceryStore));
   console.log(resultReverse);
 })();
 
+/* PROMISE */
 let firstPromise = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -420,4 +421,18 @@ async function fnWithAsyncLoop() {
   console.log(4);
 }
 
-fnWithAsyncLoop();
+/* Factory Functions */
+const factory = () => {
+  const list = [];
+
+  return Object.freeze({
+    // shallow freeze
+    addItem: (item) => list.push(item),
+    getItems: () => list,
+  });
+};
+
+const newList = factory();
+newList.addItem('first item');
+newList.addItem('second item');
+newList.getItems().forEach((item) => console.log(item));
