@@ -405,4 +405,19 @@ async function fetchItems() {
   console.log(res);
 }
 
-fetchItems();
+const items = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+
+/* items.forEach(async (item) => {
+  const res = await item;
+  console.log(res);
+}); */
+
+async function fnWithAsyncLoop() {
+  for await (const item of items) {
+    const res = item;
+    console.log(res);
+  }
+  console.log(4);
+}
+
+fnWithAsyncLoop();
